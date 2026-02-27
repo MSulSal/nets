@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ml-research-engineer-foundations",
+    "title": "ML Research Engineer (Foundations)",
+    "summary": "Research-oriented engineer building neural-network systems from first principles, with emphasis on mathematical correctness, reproducibility, and mechanism-level analysis.",
+    "focus": [
+      "Autograd correctness and gradient verification",
+      "Small mechanism-isolating experiments",
+      "Paper-to-code translation with transparent assumptions"
+    ]
+  },
+  {
+    "id": "ml-systems-engineer",
+    "title": "ML Systems Engineer (Training Infrastructure)",
+    "summary": "Systems-focused ML engineer building core tensor and training infrastructure with explicit control over computation graphs, numerical behavior, and testing discipline.",
+    "focus": [
+      "Core tensor abstractions and operator design",
+      "Deterministic checks and reliability-first engineering",
+      "Path toward custom GPU kernels and performance profiling"
+    ]
+  },
+  {
+    "id": "applied-ai-engineer-agentic",
+    "title": "Applied AI Engineer (Agentic Systems Path)",
+    "summary": "Applied AI engineer preparing a robust foundation for agentic systems by implementing model internals, evaluation rigor, and scalable experimentation workflows.",
+    "focus": [
+      "LLM/agentic architecture understanding from fundamentals",
+      "Experiment cards, ablations, and reproducibility",
+      "Engineering path from toy systems to production-grade behavior"
+    ]
+  }
+]

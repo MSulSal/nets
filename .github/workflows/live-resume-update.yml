@@ -1,0 +1,45 @@
+﻿name: Live Resume Update
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "career/**"
+      - "core/**"
+      - "checks/**"
+      - "docs/**"
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-resumes:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate resumes
+        run: python career/generate_resumes.py
+
+      - name: Commit updates if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add career/output
+          if git diff --cached --quiet; then
+            echo "No resume changes"
+          else
+            git commit -m "chore(career): auto-update generated resumes"
+            git push
+          fi

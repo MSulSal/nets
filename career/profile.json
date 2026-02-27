@@ -1,0 +1,25 @@
+{
+  "name": "Your Name",
+  "headline": "ML/AI Engineer building neural network systems from first principles",
+  "location": "City, State",
+  "email": "your.email@example.com",
+  "website": "",
+  "github": "https://github.com/MSulSal",
+  "linkedin": "",
+  "education": [
+    {
+      "school": "Your School",
+      "program": "Your Program",
+      "dates": "YYYY - YYYY",
+      "notes": "Relevant coursework or research focus"
+    }
+  ],
+  "base_skills": [
+    "Python",
+    "NumPy",
+    "Git",
+    "Neural Network Fundamentals",
+    "Autograd",
+    "Experiment Design"
+  ]
+}
