@@ -31,3 +31,42 @@ class Tensor:
             f"Tensor(data={self.data!r}, requires_grad={self.requires_grad}, "
             f"op={self.op!r})"
         )
+    
+    @staticmethod
+    def _ensure_tensor(other: Any) -> "Tensor":
+        return other if isinstance(other, Tensor) else Tensor(other)
+    
+    # ops
+    def __add__(self, other: Any) -> "Tensor":
+        other = self._ensure_tensor(other)
+        return Tensor(self.data + other.data, _children=(self, other), op="add")
+    
+    def __radd__(self, other: Any) -> "Tensor":
+        return self + other
+    
+    def __neg__(self) -> "Tensor":
+        return Tensor(-self.data, _children=(self,), op="neg")
+    
+    def __sub__(self, other: Any) -> "Tensor":
+        other = self._ensure_tensor(other)
+        return Tensor(self.data - other.data, _children=(self, other), op="sub")
+    
+    def __rsub__(self, other: Any) -> "Tensor":
+        other = self._ensure_tensor(other)
+        return other - self
+    
+    def __mul__(self, other: Any) -> "Tensor":
+        other = self._ensure_tensor(other)
+        return Tensor(self.data * other.data, _children=(self, other), op="mul")
+    
+    def __rmul__(self, other: Any) -> "Tensor":
+        return self * other
+    
+    def pow(self, exponent: float) -> "Tensor":
+        return Tensor(self.data ** exponent, _children=(self,), op="pow")
+    
+    def sum(self) -> "Tensor":
+        return Tensor(self.data.sum(), _children=(self,), op="sum")
+    
+    def mean(self) -> "Tensor":
+        return Tensor(self.data.mean(), _children=(self,), op="mean")
